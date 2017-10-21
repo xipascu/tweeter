@@ -119,14 +119,21 @@ $(function () {
     event.preventDefault();
     var theForm= this;
     var data= $(this).serialize();
-    $.ajax({
-      method: 'POST',
-      url: '/tweets/',
-      data: data
-    }).done(function() {
-      theForm.reset();
-      
-      loadTweets();
-    });
+    var charCount = data.length - 5;
+    if (charCount > 140) {
+      alert("You have reached the maximum limit of characters allowed.");
+    } else if (charCount < 1) {
+      alert("You cannot submit an empty tweet, go ahead and fill it it!");
+    } else {
+      console.log("ajax ran", charCount);
+      $.ajax({
+        method: 'POST',
+        url: '/tweets/',
+        data: data
+      }).done(function() {
+        theForm.reset();
+        loadTweets();
+      });
+    }
   });
 });

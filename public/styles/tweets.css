@@ -51,6 +51,10 @@ article {
   padding: 15px;
 }
 
+.pBody {
+  word-wrap: break-word;
+}
+
 footer {
   border-top: 1px solid #dbdbdb;
   padding: 0 8px;
