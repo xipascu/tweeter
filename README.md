@@ -18,3 +18,8 @@ This repository is the starter code for the project. It includes HTML, CSS, JS, 
 - Body-parser 1.15.2
 - Chance 1.0.2
 - Md5 2.1.
+
+## Screenshots
+
+!["Home Screenshot"](https://github.com/xipascu/tweeter/blob/master/docs/Homescreen.png?raw=true)
+!["Home Screenshot+Compose+Hover Options"](https://github.com/xipascu/tweeter/blob/master/docs/Homescreen-Compose-Hover.png?raw=true)
