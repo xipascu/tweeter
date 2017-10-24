@@ -1,4 +1,4 @@
-.new-tweet {
+/* .new-tweet {
   margin-left: 2em;
   margin-right: 2em;
   background-color: #eeeeee;
@@ -6,6 +6,16 @@
   border: 0.5px solid #D5D5D5;
   padding: 10px;
   display: none;
+} */
+
+.new-tweet {
+  margin-left: 2em;
+  margin-right: 2em;
+  border-radius: 5px;
+  border: 0.5px solid rgba(234, 218, 184, 0.51);
+  padding: 10px;
+  display: none;
+  background-color: rgba(226, 204, 157, 0.72);
 }
 
 textarea {
@@ -17,10 +27,6 @@ textarea {
   border-bottom: 2px solid grey;
   margin-top: 0px;
 }
-/* 
-input {
-  align-items: left;
-} */
 
 .counter {
   float: right;

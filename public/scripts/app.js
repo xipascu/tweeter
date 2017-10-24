@@ -6,8 +6,9 @@ $(function () {
       $('#tweets').prepend(createTweetElement(tweet));
     }
   }
-
+  
   function createTweetElement(tweetsArr) {
+    var createdAt = moment(tweetsArr.created_at).fromNow();
     return $('<article>', {
       html: [
         $('<header>', {
@@ -22,7 +23,7 @@ $(function () {
             }), 
             $('<div>', {
               'class': 'headerP',
-              'text': tweetsArr.handle
+              'text': tweetsArr.user.handle
             })
           ]
         }),
@@ -40,7 +41,7 @@ $(function () {
           html: [
             $('<div>', {
               'class': 'timestamp',
-              'text': tweetsArr.created_at
+              'text': createdAt 
             }),
           $('<img>', {
             'class': 'bottom',
@@ -53,33 +54,29 @@ $(function () {
 
   var allTweets = $('#tweets');
 
+      //Get tweets from server
   function loadTweets() {
-      //gets tweets from server
     $.ajax({
       method:'GET',
       url: '/tweets/'
     }).done(function(json) {
       renderTweets(json);
-      //iterates over tweets
-      // tweets.forEach(function (tweet) {
-      //   allTweets.prepend(createTweetElement);
     });
   }
 
   loadTweets();
 
+    //Submits new tweets, includes errors, posts without refreshing
   $('section.new-tweet form').on('submit', function(event) {
     event.preventDefault();
     var theForm = this;
     var data = $(this).serialize();
-    var charCount = data.length - 5;
-
-    if (charCount > 140) {
-      alert("You have reached the maximum limit of characters allowed.");
-    } else if (charCount < 1) {
+    var charCountLeft = Number($(this).text());
+    if (charCountLeft < 0) {
       alert("You cannot submit an empty tweet, go ahead and fill it it!");
+    } else if (charCountLeft >= 140) {
+      alert("You have reached the maximum limit of characters allowed.");
     } else {
-      //console.log("ajax ran", charCount);
       $.ajax({
         method: 'POST',
         url: '/tweets/',
@@ -91,19 +88,10 @@ $(function () {
     }
   });
 
-  // $('#nav-bar.composeBTN').on('click', function(event) {
-  //   var newTweet= $('.containter').find('.new-tweet');
-  //   newTweet.slideToggle( );
-
-
-    $("#nav-bar").on('click', '.composeBTN', function(event){
-      var newTweet= $('.container').find('.new-tweet');
-      newTweet.slideToggle();
-      newTweet.find('form').find('textarea').focus();
-      
-      // newTweet.slideToggle();
-    });
-
-
+  $("#nav-bar").on('click', '.composeBTN', function(event){
+    var newTweet= $('.container').find('.new-tweet');
+    newTweet.slideToggle();
+    newTweet.find('form').find('textarea').focus();
+  });
 });
 

@@ -21,6 +21,7 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="https://momentjs.com/downloads/moment.min.js"></script>
   </head>
 
   <body>
@@ -30,7 +31,6 @@
       <img class="logo" src="/images/bird.png" />
       <span class="header">Tweeter</span>
       <button class= "composeBTN"> Compose </button>
-      <!-- <input type="submit" class="composeBTN" text-align:"right" value="Compose"> -->
     </nav>
 
     <!-- Page-specific (main) content here -->
@@ -44,25 +44,7 @@
           </form>
         </section> 
 
-        <section id="tweets">
-          <article>
-            <header class="tweetHead clearfix">
-              <img class="images" src="/images/Calvin.jpg" />
-              <h2>Calvin & Hobbes</h2>
-              <div class="headerP">@CNH</div>
-            </header>
-            <div class="tBody">
-              <!-- <form action="/tweets/" method="POST">
-              <input type="submit" text-align:"right" value="Like"> -->
-              <p class="pBody"></p>
-            </div>
-            
-            <footer class="clearfix">
-              <div class="timestamp"> Timestamp </div>
-              <img src="/images/bottomTweet.png" class="bottom"/>
-            </footer>
-          </article>
-        </section>
+        <section id="tweets"></section>
     </main>
   </body>
 </html>
